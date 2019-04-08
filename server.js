@@ -2,6 +2,10 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 
+//? IMPORT MODELS / SCHEMAS
+const User = require('./models/User')
+const Recipe = require('./models/Recipe')
+
 //* INIT APP
 const app = express()
 const PORT = process.env.PORT || 4444
