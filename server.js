@@ -25,6 +25,8 @@ const schema = makeExecutableSchema({
 })
 
 //* MIDDLEWARE
+// JSON parsing
+app.use(express.json())
 // Create GraphiQL application
 app.use('/graphiql', graphiqlExpress({ endpointURL: 'graphql' }))
 // Connect schemas with GraphQL

@@ -4,7 +4,7 @@ type Recipe {
   category: String!
   description: String!
   instructions: String!
-  createdDate: String!
+  createdDate: String
   likes: Int
   username: String
 }
@@ -15,5 +15,9 @@ type User {
   email: String! @unique
   joinDate: String!
   favorites: [Recipe]
+}
+
+type Query {
+  getAllRecipes: [Recipe]
 }
 `
