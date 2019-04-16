@@ -1,16 +1,44 @@
 import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 
+import Error from '../Error'
+import { SIGNUP_USER } from '../../mutations/User'
+
+const initialState = {
+  username: '',
+  email: '',
+  password: '',
+  passwordConfirmation: '',
+}
+
 class SignUp extends Component {
-  state = {
-    username: '',
-    email: '',
-    password: '',
-    passwordConfirmation: '',
+  state = { ...initialState }
+
+  clearState = () => {
+    this.setState({ ...initialState })
   }
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleFormSubmit = (e, signUpUser) => {
+    e.preventDefault()
+    signUpUser().then(data => {
+      console.log(data)
+      this.clearState()
+    })
+  }
+
+  formInvalid = () => {
+    const { username, email, password, passwordConfirmation } = this.state
+    const isInvalid =
+      !username.trim() ||
+      !email.trim() ||
+      !password.trim() ||
+      password.trim() !== passwordConfirmation.trim()
+
+    return isInvalid
   }
 
   render() {
@@ -20,10 +48,16 @@ class SignUp extends Component {
       <div className="App">
         <h2 className="App">SignUp</h2>
 
-        <Mutation mutation={SIGNUP_USER}>
-          {() => {
+        <Mutation
+          mutation={SIGNUP_USER}
+          variables={{ username, email, password }}
+        >
+          {(signUpUser, { loading, error, data }) => {
             return (
-              <form className="form">
+              <form
+                className="form"
+                onSubmit={e => this.handleFormSubmit(e, signUpUser)}
+              >
                 <input
                   autoFocus
                   value={username}
@@ -54,9 +88,15 @@ class SignUp extends Component {
                   placeholder="Confirm Password"
                 />
 
-                <button type="submit" className="button-primary">
+                <button
+                  disabled={loading || this.formInvalid()}
+                  type="submit"
+                  className="button-primary"
+                >
                   Submit
                 </button>
+
+                {error && <Error error={error} />}
               </form>
             )
           }}
