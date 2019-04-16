@@ -10,6 +10,7 @@ exports.typeDefs = gql`
   #//? -------   MUTATIONS   --------
   type Mutation {
     addRecipe(data: AddRecipeInput!): Recipe!
+    signUpUser(username: String!, email: String!, password: String!): Token!
   }
 
   #//? -------   CUSTOM OBJECT TYPES   --------
@@ -29,8 +30,12 @@ exports.typeDefs = gql`
     username: String!
     password: String!
     email: String!
-    joinDate: String
+    createdAt: String!
     favorites: [Recipe]
+  }
+
+  type Token {
+    token: String!
   }
 
   #//? -------   INPUT TYPES   --------
