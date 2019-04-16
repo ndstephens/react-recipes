@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Mutation } from 'react-apollo'
 
 class SignUp extends Component {
   state = {
@@ -18,41 +19,48 @@ class SignUp extends Component {
     return (
       <div className="App">
         <h2 className="App">SignUp</h2>
-        <form className="form">
-          <input
-            autoFocus
-            value={username}
-            onChange={this.handleInputChange}
-            type="text"
-            name="username"
-            placeholder="Username"
-          />
-          <input
-            value={email}
-            onChange={this.handleInputChange}
-            type="email"
-            name="email"
-            placeholder="Email address"
-          />
-          <input
-            value={password}
-            onChange={this.handleInputChange}
-            type="password"
-            name="password"
-            placeholder="Password"
-          />
-          <input
-            value={passwordConfirmation}
-            onChange={this.handleInputChange}
-            type="password"
-            name="passwordConfirmation"
-            placeholder="Confirm Password"
-          />
 
-          <button type="submit" className="button-primary">
-            Submit
-          </button>
-        </form>
+        <Mutation mutation={SIGNUP_USER}>
+          {() => {
+            return (
+              <form className="form">
+                <input
+                  autoFocus
+                  value={username}
+                  onChange={this.handleInputChange}
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                />
+                <input
+                  value={email}
+                  onChange={this.handleInputChange}
+                  type="email"
+                  name="email"
+                  placeholder="Email address"
+                />
+                <input
+                  value={password}
+                  onChange={this.handleInputChange}
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
+                <input
+                  value={passwordConfirmation}
+                  onChange={this.handleInputChange}
+                  type="password"
+                  name="passwordConfirmation"
+                  placeholder="Confirm Password"
+                />
+
+                <button type="submit" className="button-primary">
+                  Submit
+                </button>
+              </form>
+            )
+          }}
+        </Mutation>
       </div>
     )
   }

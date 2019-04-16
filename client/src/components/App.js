@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 
 import { Query } from 'react-apollo'
-import { GET_ALL_RECIPES } from '../queries'
+import { GET_ALL_RECIPES } from '../queries/Recipe'
 
 const App = () => (
   <div className="App">
