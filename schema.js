@@ -28,7 +28,7 @@ exports.typeDefs = gql`
   type User {
     _id: ID!
     username: String!
-    password: String!
+    # password: String!
     email: String!
     createdAt: String!
     favorites: [Recipe]

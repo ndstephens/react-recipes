@@ -33,6 +33,7 @@ exports.resolvers = {
         email,
         password,
       }).save()
+      //* password is auto-hashed using a pre-save hook setup in the Mongoose User model
 
       return { token: createToken(newUser, process.env.JWT_SECRET, '1hr') }
     },
