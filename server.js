@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const { ApolloServer } = require('apollo-server-express')
 
 //? MONGOOSE MODELS
@@ -29,6 +30,12 @@ const server = new ApolloServer({
 })
 
 //* EXPRESS MIDDLEWARE
+// CORS
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+}
+app.use(cors(corsOptions))
 // JSON parsing
 app.use(express.json())
 
