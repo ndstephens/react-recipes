@@ -1,23 +1,26 @@
-exports.typeDefs = `
-type Recipe {
-  name: String!
-  category: String!
-  description: String!
-  instructions: String!
-  createdDate: String
-  likes: Int
-  username: String
-}
+const { gql } = require('apollo-server-express')
 
-type User {
-  username: String! @unique
-  password: String!
-  email: String! @unique
-  joinDate: String!
-  favorites: [Recipe]
-}
+exports.typeDefs = gql`
+  type Query {
+    recipes: [Recipe!]!
+    users: [User!]!
+  }
 
-type Query {
-  getAllRecipes: [Recipe]
-}
+  type Recipe {
+    name: String!
+    category: String!
+    description: String!
+    instructions: String!
+    createdAt: String
+    likes: Int
+    username: String
+  }
+
+  type User {
+    username: String!
+    password: String!
+    email: String!
+    joinDate: String
+    favorites: [Recipe]
+  }
 `

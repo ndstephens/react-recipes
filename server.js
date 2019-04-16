@@ -1,48 +1,46 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
-const { graphiqlExpress, graphqlExpress } = require('apollo-server-express')
-const { makeExecutableSchema } = require('graphql-tools')
+const { ApolloServer } = require('apollo-server-express')
 
-//? IMPORT MODELS / SCHEMAS
+//? MONGOOSE MODELS
 const User = require('./models/User')
 const Recipe = require('./models/Recipe')
 
-//? IMPORT GRAPHQL TYPEDEFS AND RESOLVERS
+//? GRAPHQL TYPEDEFS AND RESOLVERS
 const { typeDefs } = require('./schema')
 const { resolvers } = require('./resolvers')
 
 //
 
-//* INIT APP
+//* INIT EXPRESS APP
 const app = express()
-const PORT = process.env.PORT || 4444
+const PORT = process.env.PORT || 4000
 
-//* CREATE GRAPHQL SCHEMA
-const schema = makeExecutableSchema({
+//* CREATE APOLLO SERVER
+const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ request }) => ({
+    ...request,
+    User,
+    Recipe,
+  }),
 })
 
-//* MIDDLEWARE
+//* EXPRESS MIDDLEWARE
 // JSON parsing
 app.use(express.json())
-// Create GraphiQL application
-app.use('/graphiql', graphiqlExpress({ endpointURL: 'graphql' }))
-// Connect schemas with GraphQL
-app.use(
-  '/graphql',
-  graphqlExpress({
-    schema,
-    context: { User, Recipe },
-  })
-)
 
-//* CONNECT TO DB
+//* APOLLO MIDDLEWARE
+server.applyMiddleware({ app })
+
+//* CONNECT TO MONGODB
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true })
   .then(() => console.log('DB connected...'))
   .catch(err => console.error(err))
+mongoose.set('useCreateIndex', true)
 
 //* RUN SERVER
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}...`))
