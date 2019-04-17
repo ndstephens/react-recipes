@@ -31,25 +31,27 @@ app.use(express.json())
 // JWT Auth
 app.use(async (req, res, next) => {
   const token = req.headers.authorization
-  if (token !== 'null') {
-    try {
-      const currentUser = await jwt.verify(token, process.env.JWT_SECRET)
-      console.log(currentUser)
-    } catch (err) {
-      console.error(err)
-    }
+  if (token === 'null' || token === undefined || token === '') {
+    return next()
+  }
+  try {
+    const currentUser = await jwt.verify(token, process.env.JWT_SECRET)
+    req.currentUser = currentUser
+  } catch (err) {
+    console.error(err)
   }
   next()
 })
 
 //* CREATE APOLLO SERVER
+//? This MUST come after Express middleware b/c we attach new fields to the request object in that middleware
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ request }) => ({
-    ...request,
+  context: ({ req }) => ({
     User,
     Recipe,
+    currentUser: req.currentUser,
   }),
 })
 

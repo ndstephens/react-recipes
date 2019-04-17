@@ -6,6 +6,17 @@ exports.resolvers = {
     recipes: async (root, args, { Recipe }) => {
       return Recipe.find()
     },
+
+    currentUser: async (root, args, { User, currentUser }) => {
+      if (!currentUser) return null
+
+      const user = await User.findOne({
+        username: currentUser.username,
+      }).populate('favorites')
+      if (!user) throw new Error('User not found')
+
+      return user
+    },
   },
   Mutation: {
     addRecipe: async (
