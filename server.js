@@ -18,6 +18,22 @@ const { resolvers } = require('./resolvers')
 const app = express()
 const PORT = process.env.PORT || 4000
 
+//* EXPRESS MIDDLEWARE
+// CORS
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+}
+app.use(cors(corsOptions))
+// JSON parsing
+app.use(express.json())
+// JWT Auth
+app.use(async (req, res, next) => {
+  const token = req.headers.authorization
+  console.log(token)
+  next()
+})
+
 //* CREATE APOLLO SERVER
 const server = new ApolloServer({
   typeDefs,
@@ -28,16 +44,6 @@ const server = new ApolloServer({
     Recipe,
   }),
 })
-
-//* EXPRESS MIDDLEWARE
-// CORS
-const corsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
-}
-app.use(cors(corsOptions))
-// JSON parsing
-app.use(express.json())
 
 //* APOLLO MIDDLEWARE
 server.applyMiddleware({ app })

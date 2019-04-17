@@ -24,7 +24,8 @@ class SignUp extends Component {
 
   handleFormSubmit = (e, signUpUser) => {
     e.preventDefault()
-    signUpUser().then(data => {
+    signUpUser().then(({ data }) => {
+      localStorage.setItem('token', data.signUpUser.token)
       this.clearState()
     })
   }
