@@ -12,9 +12,11 @@ import { ApolloProvider } from 'react-apollo'
 import './index.css'
 
 import App from './components/App'
+import Navbar from './components/Navbar'
+import Search from './components/Recipe/Search'
+import withSession from './components/withSession'
 import SignUp from './components/Auth/SignUp'
 import SignIn from './components/Auth/SignIn'
-import withSession from './components/withSession'
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
@@ -38,20 +40,22 @@ const client = new ApolloClient({
 
 const Root = ({ refetch }) => (
   <Router>
-    <Switch>
-      <Route exact path="/" component={App} />
-      <Route
-        exact
-        path="/signin"
-        render={props => <SignIn refetch={refetch} {...props} />}
-      />
-      <Route
-        exact
-        path="/signup"
-        render={props => <SignUp refetch={refetch} {...props} />}
-      />
-      <Redirect to="/" />
-    </Switch>
+    <>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route path="/search" component={Search} />
+        <Route
+          path="/signin"
+          render={props => <SignIn refetch={refetch} {...props} />}
+        />
+        <Route
+          path="/signup"
+          render={props => <SignUp refetch={refetch} {...props} />}
+        />
+        <Redirect to="/" />
+      </Switch>
+    </>
   </Router>
 )
 
