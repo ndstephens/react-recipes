@@ -36,12 +36,20 @@ const client = new ApolloClient({
   },
 })
 
-const Root = () => (
+const Root = ({ refetch }) => (
   <Router>
     <Switch>
       <Route exact path="/" component={App} />
-      <Route exact path="/signin" component={SignIn} />
-      <Route exact path="/signup" component={SignUp} />
+      <Route
+        exact
+        path="/signin"
+        render={props => <SignIn refetch={refetch} {...props} />}
+      />
+      <Route
+        exact
+        path="/signup"
+        render={props => <SignUp refetch={refetch} {...props} />}
+      />
       <Redirect to="/" />
     </Switch>
   </Router>

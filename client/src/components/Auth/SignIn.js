@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+// import { withRouter } from 'react-router-dom'
 import { Mutation } from 'react-apollo'
 
 import Error from '../Error'
@@ -13,9 +13,9 @@ const initialState = {
 class SignIn extends Component {
   state = { ...initialState }
 
-  clearState = () => {
-    this.setState({ ...initialState })
-  }
+  // clearState = () => {
+  //   this.setState({ ...initialState })
+  // }
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value })
@@ -23,9 +23,11 @@ class SignIn extends Component {
 
   handleFormSubmit = (e, signInUser) => {
     e.preventDefault()
-    signInUser().then(({ data }) => {
+    signInUser().then(async ({ data }) => {
       localStorage.setItem('token', data.signInUser.token)
-      this.clearState()
+      await this.props.refetch()
+      // this.clearState()
+      this.props.history.push('/')
     })
   }
 
@@ -85,3 +87,4 @@ class SignIn extends Component {
 }
 
 export default SignIn
+// export default withRouter(SignIn)
