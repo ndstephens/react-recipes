@@ -25,7 +25,6 @@ class SignUp extends Component {
   handleFormSubmit = (e, signUpUser) => {
     e.preventDefault()
     signUpUser().then(data => {
-      console.log(data)
       this.clearState()
     })
   }
