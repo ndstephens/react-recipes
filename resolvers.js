@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs')
 const { createToken } = require('./utils/createToken')
 
 exports.resolvers = {
@@ -36,6 +37,18 @@ exports.resolvers = {
       //* password is auto-hashed using a pre-save hook setup in the Mongoose User model
 
       return { token: createToken(newUser, process.env.JWT_SECRET, '1hr') }
+    },
+
+    signInUser: async (root, { username, password }, { User }) => {
+      const user = await User.findOne({ username })
+      if (!user) throw new Error('User not found')
+
+      const isValidPassword = await bcrypt.compare(password, user.password)
+      if (!isValidPassword) throw new Error('Invalid password')
+
+      return {
+        token: createToken(user, process.env.JWT_SECRET, '1hr'),
+      }
     },
   },
 }

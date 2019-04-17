@@ -11,6 +11,7 @@ exports.typeDefs = gql`
   type Mutation {
     addRecipe(data: AddRecipeInput!): Recipe!
     signUpUser(username: String!, email: String!, password: String!): Token!
+    signInUser(username: String!, password: String!): Token!
   }
 
   #//? -------   CUSTOM OBJECT TYPES   --------
