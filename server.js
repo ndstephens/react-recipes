@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
 const { ApolloServer } = require('apollo-server-express')
 
 //? MONGOOSE MODELS
@@ -30,7 +31,14 @@ app.use(express.json())
 // JWT Auth
 app.use(async (req, res, next) => {
   const token = req.headers.authorization
-  console.log(token)
+  if (token !== 'null') {
+    try {
+      const currentUser = await jwt.verify(token, process.env.JWT_SECRET)
+      console.log(currentUser)
+    } catch (err) {
+      console.error(err)
+    }
+  }
   next()
 })
 
