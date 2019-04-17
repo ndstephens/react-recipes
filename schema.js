@@ -4,7 +4,8 @@ exports.typeDefs = gql`
   #//? -------   QUERIES   --------
   type Query {
     recipes: [Recipe!]!
-    currentUser: User
+    recipe(_id: ID!): Recipe!
+    currentUser: User!
   }
 
   #//? -------   MUTATIONS   --------

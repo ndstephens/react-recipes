@@ -7,6 +7,13 @@ exports.resolvers = {
       return Recipe.find()
     },
 
+    recipe: async (root, { _id }, { Recipe }) => {
+      const recipe = await Recipe.findOne({ _id })
+      if (!recipe) throw new Error('Recipe not found')
+
+      return recipe
+    },
+
     currentUser: async (root, args, { User, currentUser }) => {
       if (!currentUser) return null
 

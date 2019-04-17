@@ -9,3 +9,17 @@ export const GET_ALL_RECIPES = gql`
     }
   }
 `
+
+export const GET_RECIPE = gql`
+  query GET_RECIPE($_id: ID!) {
+    recipe(_id: $_id) {
+      _id
+      name
+      description
+      category
+      instructions
+      createdAt
+      likes
+    }
+  }
+`
