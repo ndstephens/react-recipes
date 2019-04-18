@@ -4,7 +4,7 @@ const { createToken } = require('./utils/createToken')
 exports.resolvers = {
   Query: {
     recipes: async (root, args, { Recipe }) => {
-      return Recipe.find()
+      return Recipe.find().sort({ createdAt: 'desc' })
     },
 
     recipe: async (root, { _id }, { Recipe }) => {
