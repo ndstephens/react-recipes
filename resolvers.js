@@ -41,10 +41,21 @@ exports.resolvers = {
 
       const user = await User.findOne({
         username: currentUser.username,
-      }).populate('favorites')
+      }).populate({
+        path: 'favorites',
+        model: 'Recipe',
+      })
       if (!user) throw new Error('User not found')
 
       return user
+    },
+
+    getUserRecipes: async (root, { username }, { Recipe }) => {
+      const userRecipes = await Recipe.find({ username }).sort({
+        createdAt: 'desc',
+      })
+
+      return userRecipes
     },
   },
   Mutation: {

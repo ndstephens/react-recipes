@@ -6,6 +6,20 @@ export const CURRENT_USER = gql`
       username
       email
       createdAt
+      favorites {
+        _id
+        name
+      }
+    }
+  }
+`
+
+export const GET_USER_RECIPES = gql`
+  query GET_USER_RECIPES($username: String!) {
+    getUserRecipes(username: $username) {
+      _id
+      name
+      likes
     }
   }
 `
