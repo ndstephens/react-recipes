@@ -20,6 +20,7 @@ export const GET_RECIPE = gql`
       instructions
       createdAt
       likes
+      username
     }
   }
 `
