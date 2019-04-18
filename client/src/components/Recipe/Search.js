@@ -1,35 +1,56 @@
-import React from 'react'
-import { Query } from 'react-apollo'
+import React, { Component } from 'react'
+import { ApolloConsumer } from 'react-apollo'
 import { Link } from 'react-router-dom'
 
 import { SEARCH_RECIPES } from '../../queries/Recipe'
 
-import Error from '../Error'
+class Search extends Component {
+  state = {
+    searchResults: [],
+  }
 
-const Search = () => (
-  <Query query={SEARCH_RECIPES} variable={{ searchTerm: '' }}>
-    {({ loading, error, data }) => {
-      if (loading) return <div>Loading...</div>
-      if (error) return <Error error={error} />
-      console.log(data)
+  handleChange = ({ searchRecipes }) => {
+    this.setState({
+      searchResults: searchRecipes,
+    })
+  }
 
-      return (
-        <div className="App">
-          <input type="search" />
-          <ul>
-            {data.searchRecipes.map(recipe => (
-              <li key={recipe._id}>
-                <Link to={`/recipe/${recipe._id}`}>
-                  <h4>{recipe.name}</h4>
-                </Link>
-                <p>{recipe.likes}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )
-    }}
-  </Query>
-)
+  render() {
+    const { searchResults } = this.state
+
+    return (
+      <ApolloConsumer>
+        {client => {
+          return (
+            <div className="App">
+              <input
+                type="search"
+                placeholder="Search for Recipes"
+                onChange={async e => {
+                  e.persist()
+                  const { data } = await client.query({
+                    query: SEARCH_RECIPES,
+                    variables: { searchTerm: e.target.value },
+                  })
+                  this.handleChange(data)
+                }}
+              />
+              <ul>
+                {searchResults.map(recipe => (
+                  <li key={recipe._id}>
+                    <Link to={`/recipe/${recipe._id}`}>
+                      <h4>{recipe.name}</h4>
+                    </Link>
+                    <p>{recipe.likes}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }}
+      </ApolloConsumer>
+    )
+  }
+}
 
 export default Search

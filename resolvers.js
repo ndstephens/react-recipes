@@ -16,14 +16,24 @@ exports.resolvers = {
 
     searchRecipes: async (root, { searchTerm }, { Recipe }) => {
       if (searchTerm) {
-        //
-      } else {
-        const recipes = await Recipe.find().sort({
-          likes: 'desc',
-          createdAt: 'desc',
+        const searchResults = await Recipe.find(
+          {
+            $text: { $search: searchTerm },
+          },
+          {
+            score: { $meta: 'textScore' },
+          }
+        ).sort({
+          score: { $meta: 'textScore' },
         })
-        return recipes
+        return searchResults
       }
+
+      const recipes = await Recipe.find().sort({
+        likes: 'desc',
+        createdAt: 'desc',
+      })
+      return recipes
     },
 
     currentUser: async (root, args, { User, currentUser }) => {
