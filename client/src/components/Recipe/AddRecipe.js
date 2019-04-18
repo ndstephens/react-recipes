@@ -5,6 +5,7 @@ import { ADD_RECIPE } from '../../mutations/Recipe'
 import { GET_ALL_RECIPES } from '../../queries/Recipe'
 
 import Error from '../Error'
+import withAuth from '../withAuth'
 
 class AddRecipe extends Component {
   state = {
@@ -123,4 +124,4 @@ class AddRecipe extends Component {
   }
 }
 
-export default AddRecipe
+export default withAuth(data => data && data.currentUser)(AddRecipe)
