@@ -1,23 +1,16 @@
 import React, { Component } from 'react'
-// import { withRouter } from 'react-router-dom'
 import { Mutation } from 'react-apollo'
 
 import Error from '../Error'
 import { SIGNUP_USER } from '../../mutations/User'
 
-const initialState = {
-  username: '',
-  email: '',
-  password: '',
-  passwordConfirmation: '',
-}
-
 class SignUp extends Component {
-  state = { ...initialState }
-
-  // clearState = () => {
-  //   this.setState({ ...initialState })
-  // }
+  state = {
+    username: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+  }
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value })
@@ -28,7 +21,6 @@ class SignUp extends Component {
     signUpUser().then(async ({ data }) => {
       localStorage.setItem('token', data.signUpUser.token)
       await this.props.refetch()
-      // this.clearState()
       this.props.history.push('/')
     })
   }
@@ -110,4 +102,3 @@ class SignUp extends Component {
 }
 
 export default SignUp
-// export default withRouter(SignUp)

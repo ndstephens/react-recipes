@@ -3,10 +3,12 @@ const { createToken } = require('./utils/createToken')
 
 exports.resolvers = {
   Query: {
+    //? GET ALL RECIPES
     recipes: async (root, args, { Recipe }) => {
       return Recipe.find().sort({ createdAt: 'desc' })
     },
 
+    //? GET SPECIFIC RECIPE
     recipe: async (root, { _id }, { Recipe }) => {
       const recipe = await Recipe.findOne({ _id })
       if (!recipe) throw new Error('Recipe not found')
@@ -14,6 +16,7 @@ exports.resolvers = {
       return recipe
     },
 
+    //? SEARCH RECIPES
     searchRecipes: async (root, { searchTerm }, { Recipe }) => {
       if (searchTerm) {
         const searchResults = await Recipe.find(
@@ -36,6 +39,7 @@ exports.resolvers = {
       return recipes
     },
 
+    //? GET CURRENT USER
     currentUser: async (root, args, { User, currentUser }) => {
       if (!currentUser) return null
 
@@ -50,6 +54,7 @@ exports.resolvers = {
       return user
     },
 
+    //? GET CURRENT USER'S RECIPES
     getUserRecipes: async (root, { username }, { Recipe }) => {
       const userRecipes = await Recipe.find({ username }).sort({
         createdAt: 'desc',
@@ -58,7 +63,9 @@ exports.resolvers = {
       return userRecipes
     },
   },
+
   Mutation: {
+    //? CREATE NEW RECIPE
     addRecipe: async (
       root,
       { data: { name, description, category, instructions, username } },
@@ -75,6 +82,7 @@ exports.resolvers = {
       return newRecipe
     },
 
+    //? DELETE RECIPE
     deleteUserRecipe: async (root, { _id }, { Recipe }) => {
       const recipe = await Recipe.findOneAndDelete({ _id })
       if (!recipe) throw new Error('Recipe not found')
@@ -82,6 +90,7 @@ exports.resolvers = {
       return recipe
     },
 
+    //? LIKE A RECIPE
     likeRecipe: async (root, { _id, username, liked }, { Recipe, User }) => {
       const recipe = await Recipe.findOneAndUpdate(
         { _id },
@@ -96,6 +105,7 @@ exports.resolvers = {
       return recipe
     },
 
+    //? SIGN UP NEW USER
     signUpUser: async (root, { username, email, password }, { User }) => {
       // Query for user based on username OR email
       const user = await User.findOne().or([{ username }, { email }])
@@ -111,6 +121,7 @@ exports.resolvers = {
       return { token: createToken(newUser, process.env.JWT_SECRET, '1hr') }
     },
 
+    //? SIGN IN USER
     signInUser: async (root, { username, password }, { User }) => {
       const user = await User.findOne({ username })
       if (!user) throw new Error('User not found')

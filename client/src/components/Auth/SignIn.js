@@ -1,21 +1,11 @@
 import React, { Component } from 'react'
-// import { withRouter } from 'react-router-dom'
 import { Mutation } from 'react-apollo'
 
 import Error from '../Error'
 import { SIGNIN_USER } from '../../mutations/User'
 
-const initialState = {
-  username: '',
-  password: '',
-}
-
 class SignIn extends Component {
-  state = { ...initialState }
-
-  // clearState = () => {
-  //   this.setState({ ...initialState })
-  // }
+  state = { username: '', password: '' }
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value })
@@ -26,7 +16,6 @@ class SignIn extends Component {
     signInUser().then(async ({ data }) => {
       localStorage.setItem('token', data.signInUser.token)
       await this.props.refetch()
-      // this.clearState()
       this.props.history.push('/')
     })
   }
@@ -87,4 +76,3 @@ class SignIn extends Component {
 }
 
 export default SignIn
-// export default withRouter(SignIn)
