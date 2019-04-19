@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require('path')
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
@@ -42,6 +43,8 @@ app.use(async (req, res, next) => {
   }
   next()
 })
+// STATIC (CLIENT INDEX)
+app.use(express.static('client/build'))
 
 //* CREATE APOLLO SERVER
 //? This MUST come after Express middleware b/c we attach new fields to the request object in that middleware
@@ -57,6 +60,13 @@ const server = new ApolloServer({
 
 //* APOLLO MIDDLEWARE
 server.applyMiddleware({ app })
+
+//* DIRECT ALL REQUEST THAT WEREN'T CAUGHT BY '/graphql' TO THE CLIENT INDEX
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
 
 //* CONNECT TO MONGODB
 mongoose

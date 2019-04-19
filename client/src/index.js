@@ -22,7 +22,7 @@ import RecipePage from './components/Recipe/RecipePage'
 import Profile from './components/Profile/Profile'
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: '/graphql',
   fetchOptions: {
     credentials: 'include',
   },
