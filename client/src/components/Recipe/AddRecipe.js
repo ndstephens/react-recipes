@@ -6,6 +6,7 @@ import { GET_ALL_RECIPES } from '../../queries/Recipe'
 
 import Error from '../Error'
 import withAuth from '../withAuth'
+import { GET_USER_RECIPES } from '../../queries/User'
 
 class AddRecipe extends Component {
   state = {
@@ -59,12 +60,18 @@ class AddRecipe extends Component {
   }
 
   render() {
-    const { name, category, description, instructions } = this.state
+    const { name, category, description, instructions, username } = this.state
 
     return (
       <Mutation
         mutation={ADD_RECIPE}
         variables={{ ...this.state }}
+        refetchQueries={() => [
+          {
+            query: GET_USER_RECIPES,
+            variables: { username },
+          },
+        ]}
         update={this.updateCache}
       >
         {(addRecipe, { loading, error, data }) => {
