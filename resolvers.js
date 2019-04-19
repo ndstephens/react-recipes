@@ -82,6 +82,19 @@ exports.resolvers = {
       return recipe
     },
 
+    likeRecipe: async (root, { _id, username }, { Recipe, User }) => {
+      const recipe = await Recipe.findOneAndUpdate(
+        { _id },
+        { $inc: { likes: 1 } }
+      )
+      await User.findOneAndUpdate(
+        { username },
+        { $addToSet: { favorites: _id } }
+      )
+
+      return recipe
+    },
+
     signUpUser: async (root, { username, email, password }, { User }) => {
       // Query for user based on username OR email
       const user = await User.findOne().or([{ username }, { email }])
