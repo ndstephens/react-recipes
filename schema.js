@@ -7,7 +7,7 @@ exports.typeDefs = gql`
     recipe(_id: ID!): Recipe!
     searchRecipes(searchTerm: String): [Recipe!]!
 
-    currentUser: User!
+    currentUser: User
     getUserRecipes(username: String!): [Recipe!]!
   }
 

@@ -5,6 +5,7 @@ import { Query } from 'react-apollo'
 import { GET_RECIPE } from '../../queries/Recipe'
 
 import Error from '../Error'
+import LikeRecipe from './LikeRecipe'
 
 const RecipePage = ({ match }) => {
   const { _id } = match.params
@@ -24,7 +25,7 @@ const RecipePage = ({ match }) => {
             <p>Instructions: {data.recipe.instructions}</p>
             <p>Likes: {data.recipe.likes}</p>
             <p>Created By: {data.recipe.username}</p>
-            <button>Like</button>
+            <LikeRecipe />
           </div>
         )
       }}
