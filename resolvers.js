@@ -75,6 +75,13 @@ exports.resolvers = {
       return newRecipe
     },
 
+    deleteUserRecipe: async (root, { _id }, { Recipe }) => {
+      const recipe = await Recipe.findOneAndDelete({ _id })
+      if (!recipe) throw new Error('Recipe not found')
+
+      return recipe
+    },
+
     signUpUser: async (root, { username, email, password }, { User }) => {
       // Query for user based on username OR email
       const user = await User.findOne().or([{ username }, { email }])
