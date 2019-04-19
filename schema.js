@@ -14,7 +14,7 @@ exports.typeDefs = gql`
   #//? -------   MUTATIONS   --------
   type Mutation {
     addRecipe(data: AddRecipeInput!): Recipe!
-    likeRecipe(_id: ID!, username: String!): Recipe!
+    likeRecipe(_id: ID!, username: String!, liked: Boolean!): Recipe!
     deleteUserRecipe(_id: ID!): Recipe
     signUpUser(username: String!, email: String!, password: String!): Token!
     signInUser(username: String!, password: String!): Token!

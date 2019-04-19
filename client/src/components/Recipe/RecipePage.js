@@ -15,8 +15,6 @@ const RecipePage = ({ match }) => {
         if (loading) return <div>Loading...</div>
         if (error) return <Error error={error} />
 
-        // console.log(data)
-
         return (
           <div className="App">
             <h2>{data.recipe.name}</h2>

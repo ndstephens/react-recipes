@@ -82,14 +82,15 @@ exports.resolvers = {
       return recipe
     },
 
-    likeRecipe: async (root, { _id, username }, { Recipe, User }) => {
+    likeRecipe: async (root, { _id, username, liked }, { Recipe, User }) => {
       const recipe = await Recipe.findOneAndUpdate(
         { _id },
-        { $inc: { likes: 1 } }
+        { $inc: { likes: liked ? 1 : -1 } },
+        { new: true }
       )
       await User.findOneAndUpdate(
         { username },
-        { $addToSet: { favorites: _id } }
+        { [liked ? '$addToSet' : '$pull']: { favorites: _id } }
       )
 
       return recipe

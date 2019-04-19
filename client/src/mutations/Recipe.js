@@ -30,8 +30,8 @@ export const ADD_RECIPE = gql`
 `
 
 export const LIKE_RECIPE = gql`
-  mutation LIKE_RECIPE($_id: ID!, $username: String!) {
-    likeRecipe(_id: $_id, username: $username) {
+  mutation LIKE_RECIPE($_id: ID!, $username: String!, $liked: Boolean!) {
+    likeRecipe(_id: $_id, username: $username, liked: $liked) {
       _id
       likes
     }
