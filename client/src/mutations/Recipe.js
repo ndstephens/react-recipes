@@ -1,5 +1,7 @@
 import { gql } from 'apollo-boost'
 
+import { recipeFragments } from '../fragments/fragments'
+
 export const ADD_RECIPE = gql`
   mutation ADD_RECIPE(
     $name: String!
@@ -17,16 +19,10 @@ export const ADD_RECIPE = gql`
         username: $username
       }
     ) {
-      _id
-      name
-      description
-      category
-      instructions
-      username
-      likes
-      createdAt
+      ...CompleteRecipe
     }
   }
+  ${recipeFragments.recipe}
 `
 
 export const LIKE_RECIPE = gql`
