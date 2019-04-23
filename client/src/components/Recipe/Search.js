@@ -27,6 +27,7 @@ class Search extends Component {
               <input
                 autoFocus
                 type="search"
+                className="search"
                 placeholder="Search for Recipes"
                 onChange={async e => {
                   e.persist()
