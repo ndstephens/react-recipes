@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
+import CKEditor from 'react-ckeditor-component'
+import Error from '../Error'
 
 import { ADD_RECIPE } from '../../mutations/Recipe'
 import { GET_ALL_RECIPES } from '../../queries/Recipe'
 
-import Error from '../Error'
 import withAuth from '../withAuth'
 import { GET_USER_RECIPES } from '../../queries/User'
 
@@ -27,6 +28,11 @@ class AddRecipe extends Component {
   handleChange = e => {
     const { name, value } = e.target
     this.setState({ [name]: value })
+  }
+
+  handleEditorChange = e => {
+    const newContent = e.editor.getData()
+    this.setState({ instructions: newContent })
   }
 
   handleSubmit = (e, addRecipe) => {
@@ -129,14 +135,21 @@ class AddRecipe extends Component {
                   onChange={this.handleChange}
                   value={description}
                 />
-                <textarea
+                <label htmlFor="instructions">Add Instructions</label>
+                <CKEditor
+                  id="instructions"
+                  name="instructions"
+                  content={instructions}
+                  events={{ change: this.handleEditorChange }}
+                />
+                {/* <textarea
                   name="instructions"
                   cols="30"
                   rows="10"
                   placeholder="Add instructions"
                   onChange={this.handleChange}
                   value={instructions}
-                />
+                /> */}
                 <button
                   disabled={loading || this.validateForm()}
                   type="submit"
