@@ -6,6 +6,9 @@ import { GET_USER_RECIPES, CURRENT_USER } from '../../queries/User'
 import { DELETE_USER_RECIPE } from '../../mutations/Recipe'
 import { GET_ALL_RECIPES } from '../../queries/Recipe'
 
+import Spinner from '../Spinner'
+import Error from '../Error'
+
 const handleDelete = deleteUserRecipe => {
   const confirmDelete = window.confirm(
     'Are you sure you want to delete this recipe?'
@@ -18,8 +21,8 @@ const handleDelete = deleteUserRecipe => {
 const UserRecipes = ({ username }) => (
   <Query query={GET_USER_RECIPES} variables={{ username }}>
     {({ loading, error, data }) => {
-      if (loading) return <div>Loading...</div>
-      if (error) return <div>Error...</div>
+      if (loading) return <Spinner />
+      if (error) return <Error error={error} />
 
       return (
         <ul>

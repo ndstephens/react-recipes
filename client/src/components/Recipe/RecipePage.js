@@ -5,6 +5,7 @@ import { Query } from 'react-apollo'
 import { GET_RECIPE } from '../../queries/Recipe'
 
 import Error from '../Error'
+import Spinner from '../Spinner'
 import LikeRecipe from './LikeRecipe'
 
 const RecipePage = ({ match }) => {
@@ -12,7 +13,7 @@ const RecipePage = ({ match }) => {
   return (
     <Query query={GET_RECIPE} variables={{ _id }}>
       {({ loading, error, data }) => {
-        if (loading) return <div>Loading...</div>
+        if (loading) return <Spinner />
         if (error) return <Error error={error} />
 
         const {

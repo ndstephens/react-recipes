@@ -6,6 +6,7 @@ import './App.css'
 import { GET_ALL_RECIPES } from '../queries/Recipe'
 
 import RecipeItem from './Recipe/RecipeItem'
+import Spinner from './Spinner'
 
 const RecipeList = posed.ul({
   shown: {
@@ -39,7 +40,7 @@ class App extends Component {
 
         <Query query={GET_ALL_RECIPES}>
           {({ loading, error, data }) => {
-            if (loading) return <div>Loading...</div>
+            if (loading) return <Spinner />
             if (error) return <div>Error</div>
 
             const { on } = this.state
