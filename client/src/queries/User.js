@@ -19,6 +19,9 @@ export const GET_USER_RECIPES = gql`
     getUserRecipes(username: $username) {
       _id
       name
+      imageUrl
+      category
+      description
       likes
     }
   }

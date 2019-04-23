@@ -15,6 +15,7 @@ exports.typeDefs = gql`
   type Mutation {
     addRecipe(data: AddRecipeInput!): Recipe!
     likeRecipe(_id: ID!, username: String!, liked: Boolean!): Recipe!
+    updateUserRecipe(_id: ID!, data: UpdateRecipeInput!): Recipe!
     deleteUserRecipe(_id: ID!): Recipe
     signUpUser(username: String!, email: String!, password: String!): Token!
     signInUser(username: String!, password: String!): Token!
@@ -54,5 +55,12 @@ exports.typeDefs = gql`
     category: String!
     instructions: String!
     username: String
+  }
+
+  input UpdateRecipeInput {
+    name: String!
+    imageUrl: String!
+    description: String!
+    category: String!
   }
 `

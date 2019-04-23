@@ -185,6 +185,7 @@ nav a:link {
   text-align: center;
   background: whitesmoke;
   padding: 1em;
+  position: relative;
 }
 
 .recipe h1 {
@@ -234,9 +235,9 @@ nav a:link {
 }
 
 .like-button {
-  position: fixed;
+  position: sticky;
   right: 1em;
-  bottom: 1em;
+  top: 1em;
   font-size: 2rem;
   background-color: #f15f79;
   color: white !important;

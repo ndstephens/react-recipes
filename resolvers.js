@@ -85,6 +85,18 @@ exports.resolvers = {
       return newRecipe
     },
 
+    //? UPDATE RECIPE
+    updateUserRecipe: async (root, { _id, data }, { Recipe }) => {
+      const updatedRecipe = await Recipe.findOneAndUpdate(
+        { _id },
+        { ...data },
+        { new: true }
+      )
+      if (!updatedRecipe) throw new Error('Recipe not found')
+
+      return updatedRecipe
+    },
+
     //? DELETE RECIPE
     deleteUserRecipe: async (root, { _id }, { Recipe }) => {
       const recipe = await Recipe.findOneAndDelete({ _id })
