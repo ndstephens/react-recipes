@@ -25,6 +25,7 @@ class Search extends Component {
           return (
             <div className="App">
               <input
+                autoFocus
                 type="search"
                 placeholder="Search for Recipes"
                 onChange={async e => {

@@ -24,6 +24,7 @@ exports.typeDefs = gql`
   type Recipe {
     _id: ID!
     name: String!
+    imageUrl: String!
     description: String!
     category: String!
     instructions: String!
@@ -48,6 +49,7 @@ exports.typeDefs = gql`
   #//? -------   INPUT TYPES   --------
   input AddRecipeInput {
     name: String!
+    imageUrl: String!
     description: String!
     category: String!
     instructions: String!

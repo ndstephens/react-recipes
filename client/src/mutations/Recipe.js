@@ -5,6 +5,7 @@ import { recipeFragments } from '../fragments/fragments'
 export const ADD_RECIPE = gql`
   mutation ADD_RECIPE(
     $name: String!
+    $imageUrl: String!
     $description: String!
     $category: String!
     $instructions: String!
@@ -13,6 +14,7 @@ export const ADD_RECIPE = gql`
     addRecipe(
       data: {
         name: $name
+        imageUrl: $imageUrl
         description: $description
         category: $category
         instructions: $instructions

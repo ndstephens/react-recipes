@@ -11,6 +11,7 @@ import { GET_USER_RECIPES } from '../../queries/User'
 class AddRecipe extends Component {
   state = {
     name: '',
+    imageUrl: '',
     category: 'Breakfast',
     description: '',
     instructions: '',
@@ -36,9 +37,18 @@ class AddRecipe extends Component {
   }
 
   validateForm = () => {
-    const { name, category, description, instructions, username } = this.state
+    const {
+      name,
+      imageUrl,
+      category,
+      description,
+      instructions,
+      username,
+    } = this.state
+
     const isInvalid =
       !name.trim() ||
+      !imageUrl.trim() ||
       !category.trim() ||
       !description.trim() ||
       !instructions.trim() ||
@@ -59,7 +69,14 @@ class AddRecipe extends Component {
   }
 
   render() {
-    const { name, category, description, instructions, username } = this.state
+    const {
+      name,
+      imageUrl,
+      category,
+      description,
+      instructions,
+      username,
+    } = this.state
 
     return (
       <Mutation
@@ -87,6 +104,13 @@ class AddRecipe extends Component {
                   placeholder="Recipe Name"
                   onChange={this.handleChange}
                   value={name}
+                />
+                <input
+                  type="text"
+                  name="imageUrl"
+                  placeholder="Recipe Image URL"
+                  onChange={this.handleChange}
+                  value={imageUrl}
                 />
                 <select
                   name="category"

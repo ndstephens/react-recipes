@@ -7,6 +7,7 @@ export const GET_ALL_RECIPES = gql`
     recipes {
       _id
       name
+      imageUrl
       category
     }
   }

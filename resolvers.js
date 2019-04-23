@@ -68,11 +68,14 @@ exports.resolvers = {
     //? CREATE NEW RECIPE
     addRecipe: async (
       root,
-      { data: { name, description, category, instructions, username } },
+      {
+        data: { name, imageUrl, description, category, instructions, username },
+      },
       { Recipe }
     ) => {
       const newRecipe = await new Recipe({
         name,
+        imageUrl,
         description,
         category,
         instructions,

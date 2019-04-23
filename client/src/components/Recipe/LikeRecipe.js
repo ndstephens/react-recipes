@@ -46,7 +46,10 @@ class LikeRecipe extends Component {
       <Mutation mutation={LIKE_RECIPE} variables={{ _id, username, liked }}>
         {likeRecipe =>
           username && (
-            <button onClick={() => this.handleClick(likeRecipe)}>
+            <button
+              className="like-button"
+              onClick={() => this.handleClick(likeRecipe)}
+            >
               {liked ? 'Unlike' : 'Like'}
             </button>
           )
