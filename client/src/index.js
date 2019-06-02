@@ -9,6 +9,7 @@ import {
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 
+import 'materialize-css/dist/css/materialize.min.css'
 import './index.css'
 
 import App from './components/App'
