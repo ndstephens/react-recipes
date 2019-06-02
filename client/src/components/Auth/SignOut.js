@@ -12,8 +12,12 @@ const SignOut = ({ history }) => (
   <ApolloConsumer>
     {client => {
       return (
-        <a href="#!" onClick={() => handleSignOut(client, history)}>
-          Sign Out
+        <a
+          className="nav-link"
+          href="#!"
+          onClick={() => handleSignOut(client, history)}
+        >
+          <i className="material-icons">cancel</i>Sign Out
         </a>
       )
     }}

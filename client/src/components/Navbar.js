@@ -23,7 +23,7 @@ const Navbar = ({ session }) => {
 
   return (
     <>
-      <nav className="nav-wrapper">
+      <nav className="nav-wrapper light-green z-depth-0">
         <div className="container">
           <NavLink exact to="/" className="brand-logo">
             React Recipes
@@ -55,12 +55,20 @@ const Navbar = ({ session }) => {
       {/* MOBILE SCREEN SLIDE-OUT NAVIGATION */}
       {session && session.currentUser ? (
         <>
-          <ul className="sidenav" ref={refSideNav} id="mobile-nav">
+          <ul
+            className="sidenav light-green lighten-4"
+            ref={refSideNav}
+            id="mobile-nav"
+          >
             <NavbarAuth session={session} closeNav={handleCloseNav} />
           </ul>
         </>
       ) : (
-        <ul className="sidenav" ref={refSideNav} id="mobile-nav">
+        <ul
+          className="sidenav light-green lighten-4"
+          ref={refSideNav}
+          id="mobile-nav"
+        >
           <NavbarUnAuth closeNav={handleCloseNav} />
         </ul>
       )}
@@ -71,13 +79,19 @@ const Navbar = ({ session }) => {
 const NavbarAuth = ({ session, closeNav }) => (
   <>
     <li onClick={closeNav}>
-      <NavLink to="/search">Search</NavLink>
+      <NavLink to="/search" className="nav-link">
+        <i className="material-icons">search</i>Search
+      </NavLink>
     </li>
     <li onClick={closeNav}>
-      <NavLink to="/recipe/add">Add Recipe</NavLink>
+      <NavLink to="/recipe/add" className="nav-link">
+        <i className="material-icons">add_circle</i>Add Recipe
+      </NavLink>
     </li>
     <li onClick={closeNav}>
-      <NavLink to="/profile">Profile</NavLink>
+      <NavLink to="/profile" className="nav-link">
+        <i className="material-icons">account_circle</i>Profile
+      </NavLink>
     </li>
     <li onClick={closeNav}>
       <SignOut />
@@ -88,13 +102,19 @@ const NavbarAuth = ({ session, closeNav }) => (
 const NavbarUnAuth = ({ closeNav }) => (
   <>
     <li onClick={closeNav}>
-      <NavLink to="/search">Search</NavLink>
+      <NavLink to="/search" className="nav-link">
+        <i className="material-icons">search</i>Search
+      </NavLink>
     </li>
     <li onClick={closeNav}>
-      <NavLink to="/signin">Sign in</NavLink>
+      <NavLink to="/signin" className="nav-link">
+        <i className="material-icons">check_circle</i>Sign in
+      </NavLink>
     </li>
     <li onClick={closeNav}>
-      <NavLink to="/signup">Sign up</NavLink>
+      <NavLink to="/signup" className="nav-link">
+        <i className="material-icons">cloud_upload</i>Sign up
+      </NavLink>
     </li>
   </>
 )
