@@ -48,6 +48,7 @@ class SignIn extends Component {
                   type="text"
                   name="username"
                   placeholder="Username"
+                  autoComplete="username"
                 />
                 <input
                   value={password}
@@ -55,6 +56,7 @@ class SignIn extends Component {
                   type="password"
                   name="password"
                   placeholder="Password"
+                  autoComplete="password"
                 />
 
                 <button
