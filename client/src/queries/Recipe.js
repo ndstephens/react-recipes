@@ -27,6 +27,7 @@ export const SEARCH_RECIPES = gql`
     searchRecipes(searchTerm: $searchTerm) {
       _id
       name
+      imageUrl
       likes
     }
   }
