@@ -23,7 +23,7 @@ const Navbar = ({ session }) => {
 
   return (
     <>
-      <nav className="nav-wrapper light-green z-depth-0">
+      <nav className="nav-wrapper teal lighten-2 z-depth-0">
         <div className="container">
           <NavLink exact to="/" className="brand-logo">
             React Recipes

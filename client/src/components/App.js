@@ -33,26 +33,34 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1 className="main-title">
-          Find Recipes You <strong>Love</strong>
-        </h1>
+      <div className="page section grey darken-2">
+        <div className="container">
+          <div className="titles grey-text text-lighten-5">
+            <h1 className="left-align title-top">
+              Find and{' '}
+              <span className="cyan-text text-lighten-2">Favorite</span>
+            </h1>
+            <h1 className="right-align title-bottom">
+              Create and <span className="cyan-text text-lighten-2">Share</span>
+            </h1>
+          </div>
 
-        <Query query={GET_ALL_RECIPES}>
-          {({ loading, error, data }) => {
-            if (loading) return <Spinner />
-            if (error) return <div>Error</div>
+          <Query query={GET_ALL_RECIPES}>
+            {({ loading, error, data }) => {
+              if (loading) return <Spinner />
+              if (error) return <div>Error</div>
 
-            const { on } = this.state
-            return (
-              <RecipeList pose={on ? 'shown' : 'hidden'} className="cards">
-                {data.recipes.map(recipe => (
-                  <RecipeItem key={recipe._id} {...recipe} />
-                ))}
-              </RecipeList>
-            )
-          }}
-        </Query>
+              const { on } = this.state
+              return (
+                <RecipeList pose={on ? 'shown' : 'hidden'} className="cards">
+                  {data.recipes.map(recipe => (
+                    <RecipeItem key={recipe._id} {...recipe} />
+                  ))}
+                </RecipeList>
+              )
+            }}
+          </Query>
+        </div>
       </div>
     )
   }

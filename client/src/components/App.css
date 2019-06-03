@@ -59,13 +59,13 @@ nav a.active {
 
 /* App */
 
-.main-title {
+/* .main-title {
   padding: 0.5em;
   color: #1eaedb;
   margin: 0;
   text-decoration-line: underline;
   text-decoration-style: dotted;
-}
+} */
 
 .cards {
   display: grid;
@@ -260,10 +260,10 @@ nav a.active {
   width: 12em;
 }
 
-.spinner {
+/* .spinner {
   text-align: center;
   padding: 5em;
-}
+} */
 
 /* User Recipes */
 

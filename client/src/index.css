@@ -19,13 +19,18 @@ body {
   min-height: calc(100% - 64px);
 }
 
-.nav-wrapper a:not(.brand-logo) {
-  font-size: 1.5rem;
+nav .brand-logo {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  font-family: 'Boogaloo', cursive;
 }
-@media (max-width: 400px) {
+@media (max-width: 470px) {
   nav .brand-logo {
     font-size: 1.7rem;
   }
+}
+.nav-wrapper a:not(.brand-logo) {
+  font-size: 1.1rem;
 }
 
 .nav-link {
@@ -47,4 +52,21 @@ body {
 }
 .sidenav li > a > i.material-icons {
   margin-right: 7px;
+}
+
+.page h1 {
+  font-family: 'Merriweather', serif;
+}
+.title-top span,
+.title-bottom span {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.title-bottom {
+  margin-top: -1rem;
+}
+
+.spinner {
+  text-align: center;
+  padding: 5em;
 }
