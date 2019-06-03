@@ -8,14 +8,15 @@ const RecipeItem = posed.li({
 })
 
 export default ({ _id, name, imageUrl, category }) => (
-  <RecipeItem
-    style={{ background: `url(${imageUrl}) center center / cover no-repeat` }}
-    className="card"
-  >
-    <span className={category}>{category}</span>
-    <div className="card-text">
-      <Link to={`/recipe/${_id}`}>
-        <h4>{name}</h4>
+  <RecipeItem className="card z-depth-0">
+    <div className="card-image">
+      <img src={imageUrl} alt="recipe item" />
+      <span className="card-title">{category}</span>
+    </div>
+
+    <div className="card-text ">
+      <Link to={`/recipe/${_id}`} className="orange-text text-accent-2">
+        {name}
       </Link>
     </div>
   </RecipeItem>

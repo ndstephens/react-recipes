@@ -7,7 +7,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  /* font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   height: 100vh;
 }
 
@@ -82,13 +84,64 @@ nav .brand-logo {
   margin-top: -1rem;
 }
 
+/* RECIPE CARDS */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 2em;
-  grid-auto-rows: 300px;
+  grid-auto-rows: 260px;
 }
 
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px !important;
+  overflow: hidden;
+  box-shadow: 0 5px 15px -4px rgba(0, 0, 0, 0.1) !important;
+}
+.card:hover {
+  box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14),
+    0 5px 5px -3px rgba(0, 0, 0, 0.2) !important;
+}
+
+.card-image {
+  height: 70%;
+  max-height: 70%;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.card-title {
+  font-family: 'Boogaloo', cursive;
+  letter-spacing: 2px;
+  font-size: 1.5rem !important;
+  background-color: rgba(0, 0, 0, 0.45);
+  padding: 0 1.2rem !important;
+  margin: 1rem;
+  border-radius: 6px;
+  top: 0 !important;
+  bottom: initial !important;
+  left: initial !important;
+  right: 0 !important;
+}
+
+.card-text {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  text-transform: uppercase;
+  font-size: calc(0.3vw + 1.2rem);
+  font-weight: 300;
+}
+
+/* SPINNER */
 .spinner {
   text-align: center;
   padding: 5em;

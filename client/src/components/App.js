@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import posed from 'react-pose'
 import { Query } from 'react-apollo'
-import './App.css'
+// import './App.css'
 
 import { GET_ALL_RECIPES } from '../queries/Recipe'
 
@@ -34,7 +34,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="page section">
+      <div className="App section">
         {/* HEADER */}
         <div className="titles light-green-text">
           <h1 className="left-align title-top">
