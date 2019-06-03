@@ -160,11 +160,24 @@ a.active:not(.brand-logo) {
   font-weight: 300;
 }
 
-/* SEARCH */
-.Search {
+/* SEARCH (SIGN-IN and SIGN-UP */
+.Search,
+.SignIn,
+.SignUp {
   margin: 2rem auto 0;
   width: 90%;
   max-width: 600px;
+}
+.Search h2,
+.SignIn h2,
+.SignUp h2 {
+  margin-bottom: 3rem;
+}
+
+.Search button,
+.SignIn button,
+.SignUp button {
+  margin-left: 45px;
 }
 
 .search-item {
@@ -212,11 +225,6 @@ a.active:not(.brand-logo) {
   .search-item__title {
     margin-left: 0;
   }
-}
-
-/* SIGNIN PAGE */
-.signin-form {
-  margin-top: 4rem;
 }
 
 /* SPINNER */

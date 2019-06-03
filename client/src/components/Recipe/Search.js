@@ -25,6 +25,8 @@ class Search extends Component {
           return (
             <div className="Search">
               <h2 className="orange-text text-accent-2">Search</h2>
+
+              {/* SEARCH INPUT */}
               <div className="input-field">
                 <i class="material-icons prefix">search</i>
                 <input
@@ -43,6 +45,7 @@ class Search extends Component {
                 <label htmlFor="search_input">Search for Recipes</label>
               </div>
 
+              {/* SEARCH RESULTS */}
               {searchResults.length > 0 && (
                 <ul>
                   {searchResults.map(recipe => (

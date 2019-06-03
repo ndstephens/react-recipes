@@ -31,17 +31,16 @@ class SignIn extends Component {
     const { username, password } = this.state
 
     return (
-      <div className="Search">
+      <div className="SignIn">
         <h2 className="orange-text text-accent-2">Sign In</h2>
 
         <Mutation mutation={SIGNIN_USER} variables={{ username, password }}>
           {(signInUser, { loading, error, data }) => {
             return (
-              <form
-                className="signin-form"
-                onSubmit={e => this.handleFormSubmit(e, signInUser)}
-              >
+              <form onSubmit={e => this.handleFormSubmit(e, signInUser)}>
+                {/* USERNAME */}
                 <div className="input-field">
+                  <i class="material-icons prefix">account_circle</i>
                   <input
                     autoFocus
                     autoComplete="username"
@@ -54,7 +53,9 @@ class SignIn extends Component {
                   <label htmlFor="username">Username</label>
                 </div>
 
+                {/* PASSWORD */}
                 <div className="input-field">
+                  <i class="material-icons prefix">security</i>
                   <input
                     autoComplete="password"
                     value={password}
@@ -66,6 +67,7 @@ class SignIn extends Component {
                   <label htmlFor="password">Password</label>
                 </div>
 
+                {/* SUBMIT BUTTON */}
                 <button
                   disabled={loading || this.formInvalid()}
                   type="submit"

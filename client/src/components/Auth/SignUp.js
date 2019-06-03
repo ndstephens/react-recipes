@@ -40,8 +40,8 @@ class SignUp extends Component {
     const { username, email, password, passwordConfirmation } = this.state
 
     return (
-      <div className="App">
-        <h2 className="App">SignUp</h2>
+      <div className="SignUp">
+        <h2 className="orange-text text-accent-2">Sign Up</h2>
 
         <Mutation
           mutation={SIGNUP_USER}
@@ -49,45 +49,67 @@ class SignUp extends Component {
         >
           {(signUpUser, { loading, error, data }) => {
             return (
-              <form
-                className="form"
-                onSubmit={e => this.handleFormSubmit(e, signUpUser)}
-              >
-                <input
-                  autoFocus
-                  value={username}
-                  onChange={this.handleInputChange}
-                  type="text"
-                  name="username"
-                  placeholder="Username"
-                />
-                <input
-                  value={email}
-                  onChange={this.handleInputChange}
-                  type="email"
-                  name="email"
-                  placeholder="Email address"
-                />
-                <input
-                  value={password}
-                  onChange={this.handleInputChange}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                />
-                <input
-                  value={passwordConfirmation}
-                  onChange={this.handleInputChange}
-                  type="password"
-                  name="passwordConfirmation"
-                  placeholder="Confirm Password"
-                />
+              <form onSubmit={e => this.handleFormSubmit(e, signUpUser)}>
+                {/* USERNAME */}
+                <div className="input-field">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input
+                    autoFocus
+                    value={username}
+                    onChange={this.handleInputChange}
+                    type="text"
+                    name="username"
+                    id="username"
+                  />
+                  <label htmlFor="username">Username</label>
+                </div>
 
+                {/* EMAIL */}
+                <div className="input-field">
+                  <i class="material-icons prefix">email</i>
+                  <input
+                    value={email}
+                    onChange={this.handleInputChange}
+                    type="email"
+                    name="email"
+                    id="email"
+                  />
+                  <label htmlFor="email">Email</label>
+                </div>
+
+                {/* PASSWORD */}
+                <div className="input-field">
+                  <i class="material-icons prefix">security</i>
+                  <input
+                    value={password}
+                    onChange={this.handleInputChange}
+                    type="password"
+                    name="password"
+                    id="password"
+                  />
+                  <label htmlFor="password">Password</label>
+                </div>
+
+                {/* CONFIRM PASSWORD */}
+                <div className="input-field">
+                  <i class="material-icons prefix" />
+                  <input
+                    value={passwordConfirmation}
+                    onChange={this.handleInputChange}
+                    type="password"
+                    name="passwordConfirmation"
+                    id="passwordConfirmation"
+                  />
+                  <label htmlFor="passwordConfirmation">Confirm Password</label>
+                </div>
+
+                {/* SUBMIT BUTTON */}
                 <button
                   disabled={loading || this.formInvalid()}
                   type="submit"
-                  className="button-primary"
+                  className="btn waves-effect waves-light green lighten-2 z-depth-0"
                 >
+                  <i class="material-icons right">cloud_upload</i>
                   Submit
                 </button>
 
