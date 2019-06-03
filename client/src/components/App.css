@@ -27,12 +27,12 @@ li {
   list-style: none;
 } */
 
-input,
+/* input,
 select,
 textarea {
   padding: 0.4em 0.2em;
   font-size: 2rem;
-}
+} */
 
 /* nav a,
 nav a:link {
@@ -45,7 +45,7 @@ nav a.active {
   font-weight: bold;
 } */
 
-.form {
+/* .form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,7 +55,7 @@ nav a.active {
 .delete-button {
   color: red;
   cursor: pointer;
-}
+} */
 
 /* App */
 
@@ -248,7 +248,7 @@ nav a.active {
 
 /* Search */
 
-.search {
+/* .search {
   font-size: 3rem;
   transition: width 0.2s ease-in;
   margin-top: 0.3em;
@@ -258,7 +258,7 @@ nav a.active {
 
 .search:focus {
   width: 12em;
-}
+} */
 
 /* .spinner {
   text-align: center;

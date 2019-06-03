@@ -160,17 +160,20 @@ a.active:not(.brand-logo) {
   font-weight: 300;
 }
 
-/* SEARCH (SIGN-IN and SIGN-UP */
+/* SEARCH -- SIGN-IN -- SIGN-UP -- ADD-RECIPE */
 .Search,
 .SignIn,
-.SignUp {
+.SignUp,
+.AddRecipe {
   margin: 2rem auto 0;
   width: 90%;
   max-width: 600px;
+  padding-bottom: 2rem;
 }
 .Search h2,
 .SignIn h2,
-.SignUp h2 {
+.SignUp h2,
+.AddRecipe h2 {
   margin-bottom: 3rem;
 }
 
@@ -178,6 +181,10 @@ a.active:not(.brand-logo) {
 .SignIn button,
 .SignUp button {
   margin-left: 45px;
+}
+
+.AddRecipe button {
+  margin-top: 2rem;
 }
 
 .search-item {
@@ -225,6 +232,10 @@ a.active:not(.brand-logo) {
   .search-item__title {
     margin-left: 0;
   }
+}
+
+input {
+  color: #9e9e9e;
 }
 
 /* SPINNER */

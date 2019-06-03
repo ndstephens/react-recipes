@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
 import CKEditor from 'react-ckeditor-component'
+import { FormSelect } from 'materialize-css'
 import Error from '../Error'
 
 import { ADD_RECIPE } from '../../mutations/Recipe'
@@ -10,19 +11,24 @@ import withAuth from '../withAuth'
 import { GET_USER_RECIPES } from '../../queries/User'
 
 class AddRecipe extends Component {
-  state = {
-    name: '',
-    imageUrl: '',
-    category: 'Breakfast',
-    description: '',
-    instructions: '',
-    username: '',
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: '',
+      imageUrl: '',
+      category: '',
+      description: '',
+      instructions: '',
+      username: '',
+    }
+    this.categoryRef = React.createRef()
   }
 
   componentDidMount() {
     if (this.props.session) {
       this.setState({ username: this.props.session.currentUser.username })
     }
+    this.categoryInstance = FormSelect.init(this.categoryRef.current)
   }
 
   handleChange = e => {
@@ -98,43 +104,71 @@ class AddRecipe extends Component {
       >
         {(addRecipe, { loading, error, data }) => {
           return (
-            <div className="App">
-              <h2 className="App">Add Recipe</h2>
+            <div className="AddRecipe">
+              <h2 className="orange-text text-accent-2">Add Recipe</h2>
+
               <form
                 className="form"
                 onSubmit={e => this.handleSubmit(e, addRecipe)}
               >
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Recipe Name"
-                  onChange={this.handleChange}
-                  value={name}
-                />
-                <input
-                  type="text"
-                  name="imageUrl"
-                  placeholder="Recipe Image URL"
-                  onChange={this.handleChange}
-                  value={imageUrl}
-                />
-                <select
-                  name="category"
-                  onChange={this.handleChange}
-                  value={category}
-                >
-                  <option value="Breakfast">Breakfast</option>
-                  <option value="Lunch">Lunch</option>
-                  <option value="Dinner">Dinner</option>
-                  <option value="Snack">Snack</option>
-                </select>
-                <input
-                  type="text"
-                  name="description"
-                  placeholder="Add description"
-                  onChange={this.handleChange}
-                  value={description}
-                />
+                {/* NAME */}
+                <div className="input-field">
+                  <input
+                    autoFocus
+                    value={name}
+                    onChange={this.handleChange}
+                    type="text"
+                    name="name"
+                    id="name"
+                  />
+                  <label htmlFor="name">Title</label>
+                </div>
+
+                {/* IMAGE URL */}
+                <div className="input-field">
+                  <input
+                    value={imageUrl}
+                    onChange={this.handleChange}
+                    type="text"
+                    name="imageUrl"
+                    id="imageUrl"
+                  />
+                  <label htmlFor="imageUrl">Image Url</label>
+                </div>
+
+                {/* CATEGORY */}
+                <div className="input-field">
+                  <select
+                    name="category"
+                    id="category"
+                    onChange={this.handleChange}
+                    value={category}
+                    ref={this.categoryRef}
+                  >
+                    <option value="" disabled selected>
+                      Choose a Category
+                    </option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="Dinner">Dinner</option>
+                    <option value="Snack">Snack</option>
+                  </select>
+                  {/* <label htmlFor="category">Category</label> */}
+                </div>
+
+                {/* DESCRIPTION */}
+                <div className="input-field">
+                  <input
+                    value={description}
+                    onChange={this.handleChange}
+                    type="text"
+                    name="description"
+                    id="description"
+                  />
+                  <label htmlFor="description">Description</label>
+                </div>
+
+                {/* INSTRUCTIONS */}
                 <label htmlFor="instructions">Add Instructions</label>
                 <CKEditor
                   id="instructions"
@@ -142,21 +176,17 @@ class AddRecipe extends Component {
                   content={instructions}
                   events={{ change: this.handleEditorChange }}
                 />
-                {/* <textarea
-                  name="instructions"
-                  cols="30"
-                  rows="10"
-                  placeholder="Add instructions"
-                  onChange={this.handleChange}
-                  value={instructions}
-                /> */}
+
+                {/* SUBMIT BUTTON */}
                 <button
                   disabled={loading || this.validateForm()}
                   type="submit"
-                  className="button-primary"
+                  className="btn waves-effect waves-light green lighten-2 z-depth-0"
                 >
+                  <i class="material-icons right">cloud_upload</i>
                   Submit
                 </button>
+
                 {error && <Error error={error} />}
               </form>
             </div>
