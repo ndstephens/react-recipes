@@ -23,9 +23,6 @@ class Search extends Component {
       <ApolloConsumer>
         {client => {
           return (
-            // <div className="Search container section">
-            //   <div className="row">
-            //     <div className="col s12 m8 offset-m2">
             <div className="Search">
               <h2 className="orange-text text-accent-2">Search</h2>
               <div className="input-field">
@@ -33,8 +30,6 @@ class Search extends Component {
                 <input
                   autoFocus
                   type="text"
-                  // className="search"
-                  // placeholder="Search for Recipes"
                   id="search_input"
                   onChange={async e => {
                     e.persist()
@@ -56,9 +51,6 @@ class Search extends Component {
                 </ul>
               )}
             </div>
-            //     </div>
-            //   </div>
-            // </div>
           )
         }}
       </ApolloConsumer>
