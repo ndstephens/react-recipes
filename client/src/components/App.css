@@ -69,10 +69,10 @@ nav a.active {
 
 .cards {
   display: grid;
-  margin: 1.5em 3em;
+  /* margin: 1.5em 3em; */
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 150px;
-  grid-auto-flow: row dense;
+  /* grid-auto-rows: 150px; */
+  /* grid-auto-flow: row dense; */
   grid-gap: 2em;
   grid-auto-rows: 300px;
 }

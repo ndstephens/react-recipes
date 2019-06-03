@@ -23,8 +23,9 @@ const Navbar = ({ session }) => {
 
   return (
     <>
-      <nav className="nav-wrapper teal lighten-2 z-depth-0">
+      <nav className="nav-wrapper green lighten-3 z-depth-1">
         <div className="container">
+          {/* BRAND LOGO - NAME */}
           <NavLink exact to="/" className="brand-logo">
             React Recipes
           </NavLink>
@@ -34,15 +35,12 @@ const Navbar = ({ session }) => {
             <i className="material-icons">menu</i>
           </a>
 
-          {/* NAVIGATION FOR LARGER SCREENS */}
+          {/* NAVIGATION -- LARGER SCREENS */}
           {session && session.currentUser ? (
             <>
               <ul className="right hide-on-med-and-down">
                 <NavbarAuth session={session} />
               </ul>
-              {/* <h4>
-                Welcome, <strong>{session.currentUser.username}</strong>
-              </h4> */}
             </>
           ) : (
             <ul className="right hide-on-med-and-down">
@@ -52,11 +50,11 @@ const Navbar = ({ session }) => {
         </div>
       </nav>
 
-      {/* MOBILE SCREEN SLIDE-OUT NAVIGATION */}
+      {/* NAVIGATION -- MOBILE SCREEN SLIDE-OUT */}
       {session && session.currentUser ? (
         <>
           <ul
-            className="sidenav light-green lighten-4"
+            className="sidenav light-green lighten-5"
             ref={refSideNav}
             id="mobile-nav"
           >
@@ -65,7 +63,7 @@ const Navbar = ({ session }) => {
         </>
       ) : (
         <ul
-          className="sidenav light-green lighten-4"
+          className="sidenav light-green lighten-5"
           ref={refSideNav}
           id="mobile-nav"
         >

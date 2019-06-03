@@ -7,6 +7,7 @@ import { GET_ALL_RECIPES } from '../queries/Recipe'
 
 import RecipeItem from './Recipe/RecipeItem'
 import Spinner from './Spinner'
+import Error from './Error'
 
 const RecipeList = posed.ul({
   shown: {
@@ -33,22 +34,23 @@ class App extends Component {
 
   render() {
     return (
-      <div className="page section grey darken-2">
-        <div className="container">
-          <div className="titles grey-text text-lighten-5">
-            <h1 className="left-align title-top">
-              Find and{' '}
-              <span className="cyan-text text-lighten-2">Favorite</span>
-            </h1>
-            <h1 className="right-align title-bottom">
-              Create and <span className="cyan-text text-lighten-2">Share</span>
-            </h1>
-          </div>
+      <div className="page section">
+        {/* HEADER */}
+        <div className="titles light-green-text">
+          <h1 className="left-align title-top">
+            Find and <span className="orange-text text-accent-2">Favorite</span>
+          </h1>
+          <h1 className="right-align title-bottom">
+            Create and <span className="orange-text text-accent-2">Share</span>
+          </h1>
+        </div>
 
+        {/* RECIPE CARDS */}
+        <div className="container">
           <Query query={GET_ALL_RECIPES}>
             {({ loading, error, data }) => {
               if (loading) return <Spinner />
-              if (error) return <div>Error</div>
+              if (error) return <Error error={error} />
 
               const { on } = this.state
               return (
