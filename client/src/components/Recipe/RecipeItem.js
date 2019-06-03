@@ -11,7 +11,7 @@ export default ({ _id, name, imageUrl, category }) => (
   <RecipeItem className="card z-depth-0">
     <div className="card-image">
       <img src={imageUrl} alt="recipe item" />
-      <span className="card-title">{category}</span>
+      <div className="card-category green accent-4">{category}</div>
     </div>
 
     <div className="card-text ">
