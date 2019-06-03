@@ -31,40 +31,48 @@ class SignIn extends Component {
     const { username, password } = this.state
 
     return (
-      <div className="App">
-        <h2 className="App">SignIn</h2>
+      <div className="Search">
+        <h2 className="orange-text text-accent-2">SignIn</h2>
 
         <Mutation mutation={SIGNIN_USER} variables={{ username, password }}>
           {(signInUser, { loading, error, data }) => {
             return (
               <form
-                className="form"
+                className="signin-form"
                 onSubmit={e => this.handleFormSubmit(e, signInUser)}
               >
-                <input
-                  autoFocus
-                  value={username}
-                  onChange={this.handleInputChange}
-                  type="text"
-                  name="username"
-                  placeholder="Username"
-                  autoComplete="username"
-                />
-                <input
-                  value={password}
-                  onChange={this.handleInputChange}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  autoComplete="password"
-                />
+                <div className="input-field">
+                  <input
+                    autoFocus
+                    autoComplete="username"
+                    value={username}
+                    onChange={this.handleInputChange}
+                    type="text"
+                    name="username"
+                    id="username"
+                  />
+                  <label htmlFor="username">Username</label>
+                </div>
+
+                <div className="input-field">
+                  <input
+                    autoComplete="password"
+                    value={password}
+                    onChange={this.handleInputChange}
+                    type="password"
+                    name="password"
+                    id="password"
+                  />
+                  <label htmlFor="password">Password</label>
+                </div>
 
                 <button
                   disabled={loading || this.formInvalid()}
                   type="submit"
-                  className="button-primary"
+                  className="btn waves-effect waves-light green lighten-2 z-depth-0"
                 >
                   Submit
+                  <i class="material-icons right">check_circle</i>
                 </button>
 
                 {error && <Error error={error} />}
