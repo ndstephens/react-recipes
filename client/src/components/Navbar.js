@@ -106,12 +106,12 @@ const NavbarUnAuth = ({ closeNav }) => (
     </li>
     <li onClick={closeNav}>
       <NavLink to="/signin" className="nav-link">
-        <i className="material-icons">check_circle</i>Sign in
+        <i className="material-icons">check_circle</i>Sign In
       </NavLink>
     </li>
     <li onClick={closeNav}>
       <NavLink to="/signup" className="nav-link">
-        <i className="material-icons">cloud_upload</i>Sign up
+        <i className="material-icons">cloud_upload</i>Sign Up
       </NavLink>
     </li>
   </>

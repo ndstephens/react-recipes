@@ -32,7 +32,7 @@ class SignIn extends Component {
 
     return (
       <div className="Search">
-        <h2 className="orange-text text-accent-2">SignIn</h2>
+        <h2 className="orange-text text-accent-2">Sign In</h2>
 
         <Mutation mutation={SIGNIN_USER} variables={{ username, password }}>
           {(signInUser, { loading, error, data }) => {
