@@ -123,19 +123,14 @@ a.active:not(.brand-logo) {
 .card-category {
   font-family: 'Boogaloo', cursive;
   letter-spacing: 1.3px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin: 1rem;
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   top: 0;
   right: 0;
-  width: 65px;
-  height: 65px;
-  clip-path: circle();
+  padding: 0.3rem 1rem;
+  border-radius: 100px;
   color: #fff;
-  overflow-wrap: break-word;
 }
 
 .card-text {

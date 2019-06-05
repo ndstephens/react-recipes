@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import posed from 'react-pose'
 import { Query } from 'react-apollo'
-// import './App.css'
 
 import { GET_ALL_RECIPES } from '../queries/Recipe'
 
