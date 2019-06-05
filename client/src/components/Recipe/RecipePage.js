@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { Query } from 'react-apollo'
+// import '../App.css'
 
 import { GET_RECIPE } from '../../queries/Recipe'
 
@@ -27,35 +28,42 @@ const RecipePage = ({ match }) => {
         } = data.recipe
 
         return (
-          <div className="App">
-            {/* <div
-              style={{
-                background: `url(${imageUrl}) center center / cover no-repeat`,
-              }}
-              className="recipe-image"
-            /> */}
+          <div className="RecipePage">
+            <div className="header">
+              <div className="header__image-container">
+                <img src={imageUrl} alt="" />
+                <div className="header__image-gradient" />
+              </div>
+
+              <div className="header__details">
+                <div className="header__info">
+                  <div>
+                    <div className="header__category green lighten-1">
+                      {category}
+                    </div>
+                  </div>
+                  <div>
+                    Created by <span>{username}</span>
+                  </div>
+                  <div>
+                    Likes: {likes}{' '}
+                    <span role="img" aria-label="heart">
+                      ❤️
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="header__title orange-text text-accent-2">
+                {name}
+              </div>
+            </div>
 
             <div className="recipe">
-              <div className="recipe-header">
-                <h2 className="recipe-name">
-                  <strong>{name}</strong>
-                </h2>
-                <h5>
-                  <strong>{category}</strong>
-                </h5>
-                <p>
-                  Created by <strong>{username}</strong>
-                </p>
-                <p>
-                  Likes: {likes}{' '}
-                  <span role="img" aria-label="heart">
-                    ❤️
-                  </span>
-                </p>
-              </div>
               <blockquote className="recipe-description">
                 {description}
               </blockquote>
+
               <h3 className="recipe-instructions__title">Instructions</h3>
               <div
                 className="recipe-instructions"
