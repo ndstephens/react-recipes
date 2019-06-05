@@ -1,14 +1,8 @@
 import React, { useRef, useEffect } from 'react'
 import { Mutation } from 'react-apollo'
-// import { Link } from 'react-router-dom'
 import { FormSelect } from 'materialize-css'
 
-// import { GET_USER_RECIPES, CURRENT_USER } from '../../queries/User'
 import { UPDATE_USER_RECIPE } from '../../mutations/Recipe'
-// import { GET_ALL_RECIPES } from '../../queries/Recipe'
-
-// import Spinner from '../Spinner'
-// import Error from '../Error'
 
 const EditRecipeModal = ({
   handleSubmit,

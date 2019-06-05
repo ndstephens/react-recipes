@@ -7,7 +7,6 @@
 body {
   margin: 0;
   padding: 0;
-  /* font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   height: 100vh;
@@ -177,12 +176,12 @@ a.active:not(.brand-logo) {
   grid-template-columns: 80px 1fr 80px;
   padding: 0.8rem 1.5rem;
   margin: 0.5rem 0;
-  box-shadow: 0 5px 15px -4px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 5px 15px -4px rgba(0, 0, 0, 0.1);
   transition: box-shadow 250ms;
 }
 .search-item:hover {
   box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14),
-    0 5px 5px -3px rgba(0, 0, 0, 0.2) !important;
+    0 5px 5px -3px rgba(0, 0, 0, 0.2);
 }
 
 .search-item img {
@@ -353,7 +352,8 @@ input {
 
 /* USER PROFILE */
 /* USER INFO */
-.UserInfo p {
+.UserInfo p,
+.recipe-container > p {
   font-size: 1.5rem;
 }
 .UserInfo a p {
@@ -415,7 +415,6 @@ input {
   position: relative;
   height: 100%;
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
 }
@@ -426,13 +425,9 @@ input {
   max-width: 600px;
   padding: 1em 1.5em;
   position: relative;
-  /* margin: 2em; */
-  /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35); */
 }
 
 .modal-content-inner h4 {
-  /* padding-top: 1em;
-  margin-bottom: 0; */
   padding-bottom: 2rem;
 }
 
@@ -442,7 +437,6 @@ input {
 }
 
 .modal-content-inner .input-field {
-  /* width: 90%; */
   margin-bottom: 2rem !important;
 }
 

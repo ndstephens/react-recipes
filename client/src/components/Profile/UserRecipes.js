@@ -73,7 +73,7 @@ class UserRecipes extends Component {
                   />
                 )}
                 {!data.getUserRecipes.length && (
-                  <p className="flow-text">
+                  <p>
                     <strong>You have no recipes</strong>
                   </p>
                 )}
