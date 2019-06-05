@@ -143,11 +143,12 @@ a.active:not(.brand-logo) {
   font-weight: 300;
 }
 
-/* SEARCH -- SIGN-IN -- SIGN-UP -- ADD-RECIPE */
+/* SEARCH -- SIGN-IN -- SIGN-UP -- ADD-RECIPE -- PROFILE */
 .Search,
 .SignIn,
 .SignUp,
-.AddRecipe {
+.AddRecipe,
+.Profile {
   margin: 2rem auto 2rem;
   width: 90%;
   max-width: 600px;
@@ -155,7 +156,8 @@ a.active:not(.brand-logo) {
 .Search h2,
 .SignIn h2,
 .SignUp h2,
-.AddRecipe h2 {
+.AddRecipe h2,
+.Profile h2 {
   margin-bottom: 3rem;
 }
 
@@ -315,6 +317,10 @@ input {
 .RecipePage .recipe-instructions {
   font-size: 1.5rem;
 }
+.RecipePage .recipe-instructions > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
 @media (max-width: 649px) {
   .RecipePage .header {
@@ -343,6 +349,116 @@ input {
   .RecipePage .header__title {
     font-size: calc(5vw + 1rem);
   }
+}
+
+/* USER PROFILE */
+/* USER INFO */
+.UserInfo p {
+  font-size: 1.5rem;
+}
+.UserInfo a p {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.recipe-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 2em;
+  grid-auto-rows: 260px;
+}
+.recipe-container .recipe-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  /* box-shadow: 0 5px 15px -4px rgba(0, 0, 0, 0.1); */
+  background-size: cover;
+  background-position: top center;
+}
+.recipe-container li a p {
+  font-size: 2.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recipe-container .recipe-buttons {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+/* UPDATE USER RECIPE MODAL */
+.my-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  visibility: hidden;
+  backface-visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.my-modal.modal-open {
+  visibility: visible;
+  backface-visibility: visible;
+  opacity: 1;
+  z-index: 10;
+}
+
+.modal-inner {
+  position: relative;
+  height: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  width: 90%;
+  max-width: 600px;
+  padding: 1em 1.5em;
+  position: relative;
+  /* margin: 2em; */
+  /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35); */
+}
+
+.modal-content-inner h4 {
+  /* padding-top: 1em;
+  margin-bottom: 0; */
+  padding-bottom: 2rem;
+}
+
+.modal-content-inner input {
+  width: 90%;
+  margin-bottom: 1rem;
+}
+
+.modal-content-inner .input-field {
+  /* width: 90%; */
+  margin-bottom: 2rem !important;
+}
+
+.modal-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.modal-buttons button {
+  margin-left: 1em;
+}
+
+.modal-buttons button:first-child {
+  margin-left: 0;
 }
 
 /* SPINNER */

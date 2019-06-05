@@ -48,6 +48,7 @@ class LikeRecipe extends Component {
           username && (
             <button
               className="btn waves-effect waves-light orange accent-2"
+              style={{ marginTop: '1.5rem' }}
               onClick={() => this.handleClick(likeRecipe)}
             >
               {liked ? (

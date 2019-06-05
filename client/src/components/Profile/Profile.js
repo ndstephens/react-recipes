@@ -5,7 +5,7 @@ import withAuth from '../withAuth'
 
 const Profile = ({ session }) => {
   return (
-    <div className="App">
+    <div className="Profile">
       <UserInfo session={session} />
       <UserRecipes username={session.currentUser.username} />
     </div>
