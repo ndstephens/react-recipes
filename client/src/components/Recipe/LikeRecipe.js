@@ -47,10 +47,20 @@ class LikeRecipe extends Component {
         {likeRecipe =>
           username && (
             <button
-              className="like-button"
+              className="btn waves-effect waves-light orange accent-2"
               onClick={() => this.handleClick(likeRecipe)}
             >
-              {liked ? 'Unlike' : 'Like'}
+              {liked ? (
+                <span>
+                  <i className="material-icons left">thumb_down</i>
+                  Unlike
+                </span>
+              ) : (
+                <span>
+                  <i className="material-icons left">thumb_up</i>
+                  Like
+                </span>
+              )}
             </button>
           )
         }
