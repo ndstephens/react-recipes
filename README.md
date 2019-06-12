@@ -20,6 +20,8 @@ Full-stack CRUD app allowing visitors to view and search for community added rec
 - MongoDB Atlas / Mongoose
 - etc...
 
+<br>
+
 ![ss1](images/Screen_Shot_1.png)
 
 <br>
