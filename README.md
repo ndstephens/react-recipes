@@ -1,10 +1,10 @@
 # React Recipes
 
-Full-stack CRUD app allowing visitors to view and search for community added recipes.  Logged-in users can create new recipes, update and delete their own, and Like/Unlike recipes.  Links to liked recipes are accessible in user's profile page.
+Full-stack CRUD app allowing visitors to view and search for community added recipes.  Logged-in users can create new recipes, update and delete their own, and Like/Unlike recipes.  Liked recipes are accessible in user's profile page.
 
 ### View [working demo](https://react-recipes-nds.herokuapp.com/)
 
-> When viewing hosted app, initial load time might be extended due to Heroku spinning up dormant instance
+> PLEASE NOTE: This app is hosted on a Heroku free tier.  If currently in 'sleep mode' (from lack of recent activity) the initial request time may be up to 10 seconds.  Subsequent requests will perform normally.  This is not a performance/optimization issue with the app itself.
 
 ---
 
